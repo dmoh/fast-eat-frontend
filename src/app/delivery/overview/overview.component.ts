@@ -73,6 +73,8 @@ export class OverviewComponent implements OnInit {
       this.orders = result.deliverer.orders;
       console.log("terminate");
       this.loading = false;
+      setTimeout(() => {
+      }, 0);
     });
   }  
   
