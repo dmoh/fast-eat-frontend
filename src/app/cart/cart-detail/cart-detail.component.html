@@ -116,6 +116,26 @@
     </div>
     <div style="display: flex" class="col-md-6">
       <div style="flex: 1">
+        Distance
+        <p style="font-size: x-small"><em>(depuis votre position jusqu'au commerce)</em></p>
+      </div>
+      <div>
+        <div *ngIf="!responseDistanceGoogle">
+          <div style="font-size: small">
+            <mat-spinner diameter="20"></mat-spinner>
+          </div>
+        </div>
+        <div *ngIf="responseDistanceGoogle && responseDistanceGoogle.distance">
+          {{ distanceText }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+    </div>
+    <div style="display: flex" class="col-md-6">
+      <div style="flex: 1">
         Frais de livraison
         <p style="font-size: x-small"><em>(entièrement reversé au livreur)</em></p>
       </div>

@@ -44,6 +44,11 @@ export class CartDetailComponent implements OnInit, AfterViewInit {
   infoOk: boolean = false;
   agreeWithLegacy: boolean = false;
   showLoaderCost: boolean = false;
+
+  get distanceText() {
+    return (this.responseDistanceGoogle) ? this.responseDistanceGoogle.distance?.text?.replace(',','.'): '' ;
+  }
+  
   constructor(
     private cartService: CartService,
     private userService: UserService,
@@ -124,6 +129,7 @@ export class CartDetailComponent implements OnInit, AfterViewInit {
           else if (response.rows[0].elements[0].status === 'OK') {
             const responseDistance = response.rows[0].elements[0];
             this.responseDistanceGoogle = responseDistance;
+            console.log(this.responseDistanceGoogle.distance);
             this.cartService.getCostDelivery(responseDistance)
               .subscribe((resp) => {
                 this.cartCurrent.deliveryCost = resp.deliveryInfos;
